@@ -1,8 +1,8 @@
-import { Head, Main, NextScript } from "next/document";
+import { Head, Html, Main, NextScript } from "next/document";
 
 const MyDocument = () => {
   return (
-    <html lang="en">
+    <Html lang="en">
       <Head>
         <script
           dangerouslySetInnerHTML={{
@@ -20,7 +20,7 @@ const MyDocument = () => {
         <Main />
         <NextScript />
       </body>
-    </html>
+    </Html>
   );
 };
 

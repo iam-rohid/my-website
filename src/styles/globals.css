@@ -1,7 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./material-palenight.min.css";
 
 .dark {
   color-scheme: dark;
+}
+
+@layer base {
+  .prose pre {
+    @apply p-0 rounded-lg;
+  }
 }

@@ -1,11 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import "@src/styles/globals.css";
 import type { CustomAppProps } from "@src/types/next";
-import {
-  ColorScheme,
-  isPrefersColorSchemeDark,
-  useColorScheme,
-} from "@src/stores/useColorScheme";
+import { ColorScheme, useColorScheme } from "@src/stores/useColorScheme";
 
 const MyApp: FC<CustomAppProps> = ({ Component, pageProps }) => {
   const colorScheme = useColorScheme((state) => state.colorScheme);

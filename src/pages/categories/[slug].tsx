@@ -8,30 +8,31 @@ import {
   Category,
   Post,
 } from "contentlayer/generated";
-import { compareDesc, format, isAfter } from "date-fns";
-import { GetStaticProps } from "next";
-import Image from "next/future/image";
+import { format } from "date-fns";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/future/image";
 
 interface Props {
-  posts: (Post & {
-    _category: Category | null;
-  })[];
+  category: Category;
   categories: Category[];
+  posts: Post[];
 }
 
-const Blog: CustomNextPage<Props> = (props) => {
-  const { categories, posts } = props;
+const Category: CustomNextPage<Props> = (props) => {
+  const { categories, category, posts } = props;
   return (
     <>
       <Head>
-        <title>Blog - Rohid</title>
+        <title>{category.title} - Rohid</title>
         <meta name="description" content={"All posts"} />
       </Head>
       <main className="flex-1 px-4 lg:px-8 py-8 lg:py-16 space-y-8 overflow-hidden border-r border-gray-100 dark:border-gray-800 transition-[border]">
         <header>
-          <h1 className="text-3xl lg:text-4xl font-bold mb-4">Blog</h1>
+          <h1 className="text-3xl lg:text-4xl font-bold mb-4">
+            {category.title}
+          </h1>
           <div className="flex gap-4 flex-wrap text-gray-500 dark:text-gray-400 mt-4 text-lg">
             <p>{posts.length} Posts</p>
           </div>
@@ -52,29 +53,6 @@ const Blog: CustomNextPage<Props> = (props) => {
               </Link>
               <Link href={`/blog/${item.slug}`}>
                 <a>
-                  <h3 className="text-lg font-medium mb-2">{item.title}</h3>
-                </a>
-              </Link>
-
-              <p className="line-clamp-2 text-gray-600 dark:text-gray-300 my-2">
-                {item.excerpt}
-              </p>
-              <div className="flex items-center gap-2 flex-wrap text-gray-500 dark:text-gray-400">
-                <p>{format(new Date(item.date), "MMM dd, yyyy")}</p>
-                <p>{item.readingTime}</p>
-                {item._category && (
-                  <Link href={`/categories/${item._category.slug}`}>
-                    <a>{item._category.title}</a>
-                  </Link>
-                )}
-                {item.isDraft && <p>Draft</p>}
-              </div>
-            </article>
-          ))}
-          {/* {posts.map((item) => (
-            <article key={item._id}>
-              <Link href={`/blog/${item.slug}`}>
-                <a>
                   <h3 className="text-xl font-medium mb-2">{item.title}</h3>
                 </a>
               </Link>
@@ -85,15 +63,10 @@ const Blog: CustomNextPage<Props> = (props) => {
               <div className="flex items-center gap-2 flex-wrap text-gray-500 dark:text-gray-400">
                 <p>{format(new Date(item.date), "MMM dd, yyyy")}</p>
                 <p>{item.readingTime}</p>
-                {item._category && (
-                  <Link href={`/categories/${item._category.slug}`}>
-                    <a>{item._category.title}</a>
-                  </Link>
-                )}
                 {item.isDraft && <p>Draft</p>}
               </div>
             </article>
-          ))} */}
+          ))}
         </div>
       </main>
       <aside className="w-64 hidden lg:block px-4 py-8">
@@ -103,25 +76,37 @@ const Blog: CustomNextPage<Props> = (props) => {
   );
 };
 
-Blog.getLayout = (page) => <BaseLayout>{page}</BaseLayout>;
-export default Blog;
+Category.getLayout = (page) => <BaseLayout>{page}</BaseLayout>;
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
+export default Category;
+
+export const getStaticPaths: GetStaticPaths = () => {
+  const slugs = allCategories.map((item) => item.slug);
+  return {
+    paths: slugs.map((slug) => ({ params: { slug } })),
+    fallback: false,
+  };
+};
+
+export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
+  if (!params) return { notFound: true };
   const categories = allCategories.sort((a, b) =>
     a.title.localeCompare(b.title)
   );
+
+  const slug = params["slug"];
+  const category = categories.find((item) => item.slug === slug);
+  if (!category) return { notFound: true };
+
   const posts = allPosts
     .filter(postsFilter)
-    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)))
-    .map((item) => ({
-      ...item,
-      _category:
-        categories.find((category) => category.slug === item.category) || null,
-    }));
+    .filter((item) => item.category === slug);
+
   return {
     props: {
-      posts,
       categories,
+      category,
+      posts,
     },
   };
 };

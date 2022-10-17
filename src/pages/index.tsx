@@ -1,27 +1,47 @@
 import BaseLayout from "@src/components/layouts/base-layout";
 import type { CustomNextPage } from "@src/types/next";
+import type { GetStaticProps } from "next";
+import { allPages, type Page } from "contentlayer/generated";
+import Image from "next/future/image";
+import { useMDXComponent } from "next-contentlayer/hooks";
+import MDXContent from "@src/components/common/mdx-content";
+import Head from "next/head";
 
-const HomePage: CustomNextPage = () => {
+interface Props {
+  page: Page;
+}
+
+const Home: CustomNextPage<Props> = ({ page }) => {
   return (
-    <main className="w-full px-4 lg:px-8 my-8 lg:my-16 space-y-8 lg:pr-56 xl:pr-64">
-      <div className="relative w-full aspect-video rounded-xl bg-gray-100 dark:bg-gray-800 transition-[background-color]"></div>
-      <article className="prose dark:prose-invert max-w-none">
-        <h1>Hi! 👋, I&apos;m Rohid</h1>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita,
-          cum. Reprehenderit repellendus et magnam.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis
-          laborum minima dolorum consequatur animi non iusto incidunt et
-          voluptas fuga, eos distinctio excepturi consequuntur dolorem dolor
-          nisi soluta autem est!
-        </p>
-      </article>
-    </main>
+    <>
+      <Head>
+        <title>{page.title}</title>
+      </Head>
+      <main className="flex-1 px-4 lg:px-8 py-8 lg:py-16 space-y-8 lg:space-y-16 overflow-hidden border-r border-gray-100 dark:border-gray-800 transition-[border]">
+        <article className="prose dark:prose-invert max-w-none">
+          <MDXContent code={page.body.code} />
+        </article>
+      </main>
+      <aside className="w-72 hidden lg:block"></aside>
+    </>
   );
 };
 
-HomePage.getLayout = (page) => <BaseLayout>{page}</BaseLayout>;
+Home.getLayout = (page) => <BaseLayout>{page}</BaseLayout>;
 
-export default HomePage;
+export default Home;
+
+export const getStaticProps: GetStaticProps = () => {
+  const homePage = allPages.find((page) => page.slug === "home");
+
+  if (!homePage)
+    return {
+      notFound: true,
+    };
+
+  return {
+    props: {
+      page: homePage,
+    },
+  };
+};

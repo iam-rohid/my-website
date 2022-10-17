@@ -15,7 +15,7 @@ const SidebarSocialLink: FC<SidebarSocialLinkProps> = ({
 }) => {
   return (
     <Link href={href}>
-      <a className="group py-1 xl:py-0 block">
+      <a className="group py-1 xl:py-0 block" target={"_blank"}>
         <div
           className={clsx(
             "flex items-center rounded-full w-12 h-12 xl:h-10 justify-center xl:w-fit xl:px-3 group-hover:bg-gray-100 dark:group-hover:bg-gray-800 transition-[color,background-color]",

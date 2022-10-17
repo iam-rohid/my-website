@@ -5,7 +5,7 @@ const BaseLayout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className="container xl:max-w-screen-xl mx-auto flex">
       <Sidebar />
-      <div className="flex-1">{children}</div>
+      {children}
     </div>
   );
 };
