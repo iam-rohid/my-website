@@ -28,7 +28,7 @@ const Category: CustomNextPage<Props> = (props) => {
         <title>{category.title} - Rohid</title>
         <meta name="description" content={"All posts"} />
       </Head>
-      <main className="flex-1 px-4 lg:px-8 py-8 lg:py-16 space-y-8 overflow-hidden border-r border-gray-100 dark:border-gray-800 transition-[border]">
+      <main className="flex-1 px-4 lg:px-8 py-8 lg:py-16 space-y-8 overflow-hidden border-x border-gray-100 dark:border-gray-800 transition-[border]">
         <header>
           <h1 className="text-3xl lg:text-4xl font-bold mb-4">
             {category.title}
@@ -47,12 +47,12 @@ const Category: CustomNextPage<Props> = (props) => {
                     alt={item.coverImage.alt}
                     width={item.coverImage.width}
                     height={item.coverImage.height}
-                    className="rounded-lg aspect-video object-cover"
+                    className="rounded-xl aspect-video object-cover"
                   />
                 </a>
               </Link>
               <Link href={`/blog/${item.slug}`}>
-                <a>
+                <a className="hover:text-primary-500 dark:hover:text-primary-400 transition-[color]">
                   <h3 className="text-xl font-medium mb-2">{item.title}</h3>
                 </a>
               </Link>
@@ -61,7 +61,6 @@ const Category: CustomNextPage<Props> = (props) => {
                 {item.excerpt}
               </p>
               <div className="flex items-center gap-2 flex-wrap text-gray-500 dark:text-gray-400">
-                <p>{format(new Date(item.date), "MMM dd, yyyy")}</p>
                 <p>{item.readingTime}</p>
                 {item.isDraft && <p>Draft</p>}
               </div>

@@ -14,7 +14,7 @@ import SidebarSocialLink from "./sidebar-social-link";
 const links = socialLinks
   .filter((item) => item.isFeatured)
   .map((link) => ({
-    href: `/${link.id}`,
+    href: link.url,
     icon:
       link.id === "twitter" ? (
         <FiTwitter />

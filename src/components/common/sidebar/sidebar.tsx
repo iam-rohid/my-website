@@ -16,7 +16,7 @@ import SidebarSocialLinks from "./sidebar-social-links";
 
 const Sidebar = () => {
   return (
-    <aside className="h-screen sticky top-0 left-0 w-16 xl:w-64 flex flex-col border-r border-gray-100 dark:border-gray-800 overflow-y-auto transition-[border]">
+    <aside className="h-screen sticky top-0 left-0 w-16 xl:w-64 flex flex-col overflow-y-auto transition-[border]">
       <div className="flex-1 my-4 xl:my-8">
         <div className="mb-6 px-2 xl:px-8 flex-col">
           <Link href="/">

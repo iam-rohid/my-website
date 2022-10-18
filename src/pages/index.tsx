@@ -17,7 +17,7 @@ const Home: CustomNextPage<Props> = ({ page }) => {
       <Head>
         <title>{page.title}</title>
       </Head>
-      <main className="flex-1 px-4 lg:px-8 py-8 lg:py-16 space-y-8 lg:space-y-16 overflow-hidden border-r border-gray-100 dark:border-gray-800 transition-[border]">
+      <main className="flex-1 px-4 lg:px-8 py-8 lg:py-16 space-y-8 lg:space-y-16 overflow-hidden border-x border-gray-100 dark:border-gray-800 transition-[border]">
         <article className="prose dark:prose-invert max-w-none">
           <MDXContent code={page.body.code} />
         </article>

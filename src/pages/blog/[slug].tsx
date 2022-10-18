@@ -34,7 +34,7 @@ const BlogPost: CustomNextPage<Props> = (props) => {
         <title>{post.title}</title>
         <meta name="description" content={post.excerpt} />
       </Head>
-      <main className="flex-1 px-4 lg:px-8 py-8 lg:py-16 space-y-8 overflow-hidden border-r border-gray-100 dark:border-gray-800 transition-[border]">
+      <main className="flex-1 px-4 lg:px-8 py-8 lg:py-16 space-y-8 overflow-hidden border-x border-gray-100 dark:border-gray-800 transition-[border]">
         <header>
           <h1 className="text-3xl lg:text-4xl font-bold">{post.title}</h1>
           <div className="flex gap-4 flex-wrap text-gray-500 dark:text-gray-400 mt-4 text-lg mb-6">
@@ -42,7 +42,9 @@ const BlogPost: CustomNextPage<Props> = (props) => {
             <p>{post.readingTime}</p>
             {!!category && (
               <Link href={`/categories/${category.slug}`}>
-                <a className="no-underline">{category.title}</a>
+                <a className="hover:text-primary-500 dark:hover:text-primary-400 transition-[color]">
+                  {category.title}
+                </a>
               </Link>
             )}
           </div>
