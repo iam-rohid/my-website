@@ -138,7 +138,7 @@ const Project: CustomNextPage<Props> = (props) => {
             </div>
           </header>
 
-          <article className="prose max-w-none px-4 py-16 dark:prose-invert lg:prose-lg lg:px-8">
+          <article className="prose max-w-none overflow-hidden px-4 py-16 dark:prose-invert lg:prose-lg lg:px-8">
             <MDXContent code={project.body.code} />
           </article>
         </div>

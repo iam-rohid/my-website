@@ -35,8 +35,8 @@ const BlogPost: CustomNextPage<Props> = (props) => {
         <title>{post.title}</title>
         <meta name="description" content={post.excerpt} />
       </Head>
-      <main className="flex flex-1">
-        <div className="flex-1 space-y-12 py-8 px-4 lg:space-y-16 lg:py-16 lg:px-8">
+      <main className="flex flex-1 overflow-hidden">
+        <div className="flex-1 space-y-12 overflow-hidden py-8 px-4 lg:space-y-16 lg:py-16 lg:px-8">
           <PageHeader
             title={post.title}
             subtitle={
