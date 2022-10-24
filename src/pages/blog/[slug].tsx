@@ -13,6 +13,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { postsFilter } from "@src/utils/postsFilter";
 import Image from "next/future/image";
+import PageHeader from "@src/components/common/page-header";
 
 type Props = {
   post: Post;
@@ -34,35 +35,39 @@ const BlogPost: CustomNextPage<Props> = (props) => {
         <title>{post.title}</title>
         <meta name="description" content={post.excerpt} />
       </Head>
-      <main className="flex-1 px-4 lg:px-8 py-8 lg:py-16 space-y-8 overflow-hidden border-x border-gray-100 dark:border-gray-800 transition-[border]">
-        <header>
-          <h1 className="text-3xl lg:text-4xl font-bold">{post.title}</h1>
-          <div className="flex gap-4 flex-wrap text-gray-500 dark:text-gray-400 mt-4 text-lg mb-6">
-            <p>{format(new Date(post.date), "MMMM dd, yyyy")}</p>
-            <p>{post.readingTime}</p>
-            {!!category && (
-              <Link href={`/categories/${category.slug}`}>
-                <a className="hover:text-primary-500 dark:hover:text-primary-400 transition-[color]">
-                  {category.title}
-                </a>
-              </Link>
-            )}
-          </div>
-          <Image
-            src={post.coverImage.url}
-            alt={post.coverImage.alt}
-            width={post.coverImage.width}
-            height={post.coverImage.height}
-            className="rounded-md md:rounded-xl aspect-video object-cover"
-          />
-        </header>
-        <article className="prose dark:prose-invert lg:prose-lg max-w-none">
-          <div className="">
+      <main className="flex flex-1">
+        <div className="flex-1 space-y-12 py-8 px-4 lg:space-y-16 lg:py-16 lg:px-8">
+          <PageHeader
+            title={post.title}
+            subtitle={
+              <>
+                <p>{format(new Date(post.date), "MMMM dd, yyyy")}</p>
+                <p>{post.readingTime}</p>
+                {!!category && (
+                  <Link href={`/categories/${category.slug}`}>
+                    <a className="hover:text-gray-900 dark:hover:text-gray-50">
+                      {category.title}
+                    </a>
+                  </Link>
+                )}
+              </>
+            }
+          >
+            <Image
+              src={post.coverImage.url}
+              alt={post.coverImage.alt}
+              width={post.coverImage.width}
+              height={post.coverImage.height}
+              className="mt-8 aspect-video rounded-md object-cover md:rounded-xl"
+            />
+          </PageHeader>
+
+          <article className="prose max-w-none dark:prose-invert lg:prose-lg">
             <MDXContent components={components} />
-          </div>
-        </article>
+          </article>
+        </div>
+        <aside className="w-64 border-l  border-gray-100 px-4 py-8 dark:border-gray-800 max-lg:hidden"></aside>
       </main>
-      <aside className="w-64 hidden lg:block"></aside>
     </>
   );
 };

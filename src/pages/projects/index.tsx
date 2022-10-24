@@ -7,6 +7,7 @@ import Link from "next/link";
 import { GetStaticProps } from "next";
 import { compareDesc } from "date-fns";
 import { MdOpenInNew } from "react-icons/md";
+import PageHeader from "@src/components/common/page-header";
 
 interface Props {
   projects: Project[];
@@ -15,49 +16,49 @@ interface Props {
 const Projects: CustomNextPage<Props> = (props) => {
   const { projects } = props;
   return (
-    <>
+    <main className="flex flex-1">
       <Head>
         <title>Projects - Rohid</title>
-        <meta name="description" content={"All posts"} />
+        <meta name="description" content={"All Projects"} />
       </Head>
-      <main className="flex-1 px-4 lg:px-8 py-8 lg:py-16 space-y-8 overflow-hidden border-x border-gray-100 dark:border-gray-800 transition-[border]">
-        <header>
-          <h1 className="text-3xl lg:text-4xl font-bold mb-4">Projects</h1>
-          <div className="flex gap-4 flex-wrap text-gray-500 dark:text-gray-400 mt-4 text-lg">
-            <p>
-              {projects.length} Project{projects.length > 1 ? "s" : ""}
-            </p>
-          </div>
-        </header>
-        <div className="grid md:grid-cols-2 gap-8">
+
+      <div className="flex-1 space-y-12 py-8 px-4 lg:space-y-16 lg:py-16 lg:px-8">
+        <PageHeader
+          title="Projects"
+          subtitle={`${projects.length} Project${
+            projects.length > 1 ? "s" : ""
+          }`}
+        />
+
+        <div className="grid gap-8 md:grid-cols-2">
           {projects.map((item) => (
             <article key={item._id} className="text-center">
               <Link href={`/projects/${item.slug}`}>
-                <a className="mb-6 block mx-auto">
+                <a className="mx-auto mb-6 block">
                   <Image
                     src={item.icon.url}
                     alt={item.icon.alt}
                     width={item.icon.width}
                     height={item.icon.height}
-                    className="rounded-3xl aspect-square w-32 object-cover mx-auto shadow-xl"
+                    className="mx-auto aspect-square w-32 rounded-3xl object-cover shadow-xl"
                   />
                 </a>
               </Link>
               <Link href={`/projects/${item.slug}`}>
-                <a className="hover:text-primary-500 dark:hover:text-primary-400 transition-[color]">
-                  <h3 className="text-xl font-medium mb-2">{item.title}</h3>
+                <a className="hover:text-primary-500 dark:hover:text-primary-400">
+                  <h3 className="mb-2 text-xl font-medium">{item.title}</h3>
                 </a>
               </Link>
 
-              <p className="line-clamp-3 text-gray-600 dark:text-gray-300 my-2">
+              <p className="my-2 text-gray-600 line-clamp-3 dark:text-gray-300">
                 {item.excerpt}
               </p>
-              <div className="flex justify-center gap-4 flex-wrap">
+              <div className="flex flex-wrap justify-center gap-4">
                 {item.availableOn.web && (
                   <Link href={item.availableOn.web.url}>
                     <a
                       target="_blank"
-                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400 transition-[color]"
+                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400"
                     >
                       Web
                       <MdOpenInNew className="inline" />
@@ -68,7 +69,7 @@ const Projects: CustomNextPage<Props> = (props) => {
                   <Link href={item.availableOn.ios.url}>
                     <a
                       target="_blank"
-                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400 transition-[color]"
+                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400"
                     >
                       iOS
                       <MdOpenInNew className="inline" />
@@ -79,7 +80,7 @@ const Projects: CustomNextPage<Props> = (props) => {
                   <Link href={item.availableOn.android.url}>
                     <a
                       target="_blank"
-                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400 transition-[color]"
+                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400"
                     >
                       Android
                       <MdOpenInNew className="inline" />
@@ -90,7 +91,7 @@ const Projects: CustomNextPage<Props> = (props) => {
                   <Link href={item.availableOn.macOs.url}>
                     <a
                       target="_blank"
-                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400 transition-[color]"
+                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400"
                     >
                       Mac
                       <MdOpenInNew className="inline" />
@@ -101,7 +102,7 @@ const Projects: CustomNextPage<Props> = (props) => {
                   <Link href={item.availableOn.windows.url}>
                     <a
                       target="_blank"
-                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400 transition-[color]"
+                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400"
                     >
                       Windows
                       <MdOpenInNew className="inline" />
@@ -112,7 +113,7 @@ const Projects: CustomNextPage<Props> = (props) => {
                   <Link href={item.availableOn.linux.url}>
                     <a
                       target="_blank"
-                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400 transition-[color]"
+                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400"
                     >
                       Linux
                       <MdOpenInNew className="inline" />
@@ -123,7 +124,7 @@ const Projects: CustomNextPage<Props> = (props) => {
                   <Link href={item.repoUrl}>
                     <a
                       target="_blank"
-                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400 transition-[color]"
+                      className="flex items-center gap-1 hover:text-primary-500 dark:hover:text-primary-400"
                     >
                       Source
                       <MdOpenInNew className="inline" />
@@ -134,9 +135,10 @@ const Projects: CustomNextPage<Props> = (props) => {
             </article>
           ))}
         </div>
-      </main>
-      <aside className="w-64 hidden lg:block px-4 py-8"></aside>
-    </>
+      </div>
+
+      <aside className="w-64 border-l  border-gray-100 px-4 py-8 dark:border-gray-800 max-lg:hidden"></aside>
+    </main>
   );
 };
 

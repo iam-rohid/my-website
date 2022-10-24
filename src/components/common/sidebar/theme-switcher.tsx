@@ -6,9 +6,9 @@ const ThemeSwitcher = () => {
   const { colorScheme, setColorScheme, toggleColorScheme } = useColorScheme();
   return (
     <div className="p-2 xl:p-4">
-      <div className="hidden xl:flex items-center bg-gray-100 dark:bg-gray-800 rounded-full p-1 gap-1 relative z-10 transition-[background-color]">
+      <div className="relative z-10 hidden items-center gap-1 rounded-full bg-gray-100 p-1 dark:bg-gray-800 xl:flex">
         <div
-          className="absolute p-1 left-0 top-0 bottom-0 w-1/3 -z-10 transition-[left,background-color]"
+          className="absolute left-0 top-0 bottom-0 -z-10 w-1/3 p-1 transition-[left]"
           style={{
             left:
               colorScheme === ColorScheme.Auto
@@ -18,14 +18,14 @@ const ThemeSwitcher = () => {
                 : "66.6666666667%",
           }}
         >
-          <div className="w-full h-full bg-white dark:bg-gray-700 rounded-full"></div>
+          <div className="h-full w-full rounded-full bg-white dark:bg-gray-700"></div>
         </div>
         <button
           className={clsx(
-            "flex-1 py-1 transition-[color] rounded-full",
+            "flex-1 rounded-full py-1",
             colorScheme === ColorScheme.Auto
               ? "text-gray-900 dark:text-gray-50"
-              : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50"
+              : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
           )}
           onClick={() => setColorScheme(ColorScheme.Auto)}
         >
@@ -33,10 +33,10 @@ const ThemeSwitcher = () => {
         </button>
         <button
           className={clsx(
-            "flex-1 py-1 transition-[color] rounded-full",
+            "flex-1 rounded-full py-1",
             colorScheme === ColorScheme.Light
               ? "text-gray-900 dark:text-gray-50"
-              : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50"
+              : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
           )}
           onClick={() => setColorScheme(ColorScheme.Light)}
         >
@@ -44,10 +44,10 @@ const ThemeSwitcher = () => {
         </button>
         <button
           className={clsx(
-            "flex-1 py-1 transition-[color] rounded-full",
+            "flex-1 rounded-full py-1",
             colorScheme === ColorScheme.Dark
               ? "text-gray-900 dark:text-gray-50"
-              : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-50"
+              : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
           )}
           onClick={() => setColorScheme(ColorScheme.Dark)}
         >
@@ -55,7 +55,7 @@ const ThemeSwitcher = () => {
         </button>
       </div>
       <button
-        className="w-12 h-12 xl:hidden hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-50"
+        className="flex h-12 w-12 items-center justify-center rounded-full text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-gray-50 xl:hidden"
         onClick={toggleColorScheme}
       >
         <span className="text-3xl">

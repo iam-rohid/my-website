@@ -14,7 +14,7 @@ const MyApp: FC<CustomAppProps> = ({ Component, pageProps }) => {
     if (!window) return;
     if (!colorShemeAdded) {
       const cs = localStorage.getItem("color-scheme");
-      setColorScheme(cs as any);
+      setColorScheme((cs as ColorScheme) || ColorScheme.Auto);
       setColorShemeAdded(true);
     } else {
       localStorage.setItem("color-scheme", colorScheme);

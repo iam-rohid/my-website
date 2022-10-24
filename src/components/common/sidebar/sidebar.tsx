@@ -16,21 +16,21 @@ import SidebarSocialLinks from "./sidebar-social-links";
 
 const Sidebar = () => {
   return (
-    <aside className="h-screen sticky top-0 left-0 w-16 xl:w-64 flex flex-col overflow-y-auto transition-[border]">
-      <div className="flex-1 my-4 xl:my-8">
-        <div className="mb-6 px-2 xl:px-8 flex-col">
+    <aside className="sticky top-0 left-0 flex h-screen w-16 flex-col overflow-y-auto border-r border-gray-100  dark:border-gray-800 xl:w-64">
+      <div className="my-4 flex-1 xl:my-8">
+        <div className="mb-6 flex-col px-2 xl:px-8">
           <Link href="/">
-            <a className="relative w-12 xl:w-16 h-12 xl:h-16 rounded-full overflow-hidden mb-4 block">
+            <a className="relative mb-4 block h-12 w-12 overflow-hidden rounded-full xl:h-16 xl:w-16">
               <Image
                 src="https://pbs.twimg.com/profile_images/1481868973537132544/0NSx-X8V_400x400.jpg"
                 alt="Profile Pic"
                 layout="fill"
-                className="absolute inset-0 w-full h-full object-cover"
+                className="absolute inset-0 h-full w-full object-cover"
               />
             </a>
           </Link>
           <div className="hidden xl:block">
-            <p className="font-bold text-2xl">Rohid</p>
+            <p className="text-2xl font-bold">Rohid</p>
           </div>
         </div>
         <nav className="px-2 xl:px-4">

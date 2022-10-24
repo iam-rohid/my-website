@@ -2,8 +2,6 @@ import BaseLayout from "@src/components/layouts/base-layout";
 import type { CustomNextPage } from "@src/types/next";
 import type { GetStaticProps } from "next";
 import { allPages, type Page } from "contentlayer/generated";
-import Image from "next/future/image";
-import { useMDXComponent } from "next-contentlayer/hooks";
 import MDXContent from "@src/components/common/mdx-content";
 import Head from "next/head";
 
@@ -17,12 +15,12 @@ const Home: CustomNextPage<Props> = ({ page }) => {
       <Head>
         <title>{page.title}</title>
       </Head>
-      <main className="flex-1 px-4 lg:px-8 py-8 lg:py-16 space-y-8 lg:space-y-16 overflow-hidden border-x border-gray-100 dark:border-gray-800 transition-[border]">
-        <article className="prose dark:prose-invert max-w-none">
+      <main className="flex-1 space-y-8 overflow-hidden border-x border-gray-100 px-4 py-8 dark:border-gray-800 lg:space-y-16 lg:px-8 lg:py-16">
+        <article className="prose max-w-none dark:prose-invert">
           <MDXContent code={page.body.code} />
         </article>
       </main>
-      <aside className="w-72 hidden lg:block"></aside>
+      <aside className="hidden w-72 lg:block"></aside>
     </>
   );
 };

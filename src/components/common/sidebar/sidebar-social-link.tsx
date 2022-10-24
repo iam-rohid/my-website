@@ -15,16 +15,16 @@ const SidebarSocialLink: FC<SidebarSocialLinkProps> = ({
 }) => {
   return (
     <Link href={href}>
-      <a className="group py-1 xl:py-0 block" target={"_blank"}>
+      <a className="group block py-1 xl:py-0" target={"_blank"}>
         <div
           className={clsx(
-            "flex items-center rounded-full w-12 h-12 xl:h-10 justify-center xl:w-fit xl:px-3 group-hover:bg-gray-100 dark:group-hover:bg-gray-800 transition-[color,background-color]",
-            "text-gray-600 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-50"
+            "flex h-12 w-12 items-center justify-center rounded-full group-hover:bg-gray-100 dark:group-hover:bg-gray-800 xl:h-10 xl:w-fit xl:px-3",
+            "text-gray-600 group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-gray-50"
           )}
         >
           <span className="text-2xl">{icon}</span>
-          <div className="flex-1 hidden xl:flex">
-            <span className="px-4 text-lg flex-1 truncate">{label}</span>
+          <div className="hidden flex-1 xl:flex">
+            <span className="flex-1 truncate px-4 text-lg">{label}</span>
           </div>
         </div>
       </a>
