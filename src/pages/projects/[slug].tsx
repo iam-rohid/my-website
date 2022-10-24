@@ -39,10 +39,10 @@ const Project: CustomNextPage<Props> = (props) => {
                 height={project.icon.height}
                 className="-mt-8 mb-8 aspect-square w-32 rounded-2xl object-cover shadow-xl lg:-mt-14 lg:w-40 lg:rounded-3xl"
               />
-              <h1 className="mb-6 text-3xl font-bold lg:text-4xl">
+              <h1 className="mb-6 bg-gray-900 text-3xl font-bold dark:text-gray-50 lg:text-4xl">
                 {project.title}
               </h1>
-              <div className="text-gray-600 dark:text-gray-300">
+              <div>
                 <p className="mb-1 text-lg">
                   Name: <b>{project.name}</b>
                 </p>
@@ -60,7 +60,7 @@ const Project: CustomNextPage<Props> = (props) => {
                     <Link href={project.availableOn.web.url}>
                       <a
                         target="_blank"
-                        className="inline-flex items-center gap-1 font-medium hover:text-primary-500 dark:hover:text-primary-400"
+                        className="inline-flex items-center gap-1 font-medium hover:text-gray-900 dark:hover:text-gray-50"
                       >
                         Web
                         <MdOpenInNew />
@@ -71,7 +71,7 @@ const Project: CustomNextPage<Props> = (props) => {
                     <Link href={project.availableOn.ios.url}>
                       <a
                         target="_blank"
-                        className="inline-flex items-center gap-1 font-medium hover:text-primary-500 dark:hover:text-primary-400"
+                        className="inline-flex items-center gap-1 font-medium hover:text-gray-900 dark:hover:text-gray-50"
                       >
                         iOS
                         <MdOpenInNew />
@@ -82,7 +82,7 @@ const Project: CustomNextPage<Props> = (props) => {
                     <Link href={project.availableOn.android.url}>
                       <a
                         target="_blank"
-                        className="inline-flex items-center gap-1 font-medium hover:text-primary-500 dark:hover:text-primary-400"
+                        className="inline-flex items-center gap-1 font-medium hover:text-gray-900 dark:hover:text-gray-50"
                       >
                         Android
                         <MdOpenInNew />
@@ -93,7 +93,7 @@ const Project: CustomNextPage<Props> = (props) => {
                     <Link href={project.availableOn.macOs.url}>
                       <a
                         target="_blank"
-                        className="inline-flex items-center gap-1 font-medium hover:text-primary-500 dark:hover:text-primary-400"
+                        className="inline-flex items-center gap-1 font-medium hover:text-gray-900 dark:hover:text-gray-50"
                       >
                         Mac
                         <MdOpenInNew />
@@ -104,7 +104,7 @@ const Project: CustomNextPage<Props> = (props) => {
                     <Link href={project.availableOn.windows.url}>
                       <a
                         target="_blank"
-                        className="inline-flex items-center gap-1 font-medium hover:text-primary-500 dark:hover:text-primary-400"
+                        className="inline-flex items-center gap-1 font-medium hover:text-gray-900 dark:hover:text-gray-50"
                       >
                         Windows
                         <MdOpenInNew />
@@ -115,7 +115,7 @@ const Project: CustomNextPage<Props> = (props) => {
                     <Link href={project.availableOn.linux.url}>
                       <a
                         target="_blank"
-                        className="inline-flex items-center gap-1 font-medium hover:text-primary-500 dark:hover:text-primary-400"
+                        className="inline-flex items-center gap-1 font-medium hover:text-gray-900 dark:hover:text-gray-50"
                       >
                         Linux
                         <MdOpenInNew />
@@ -127,7 +127,7 @@ const Project: CustomNextPage<Props> = (props) => {
                   <Link href={project.repoUrl}>
                     <a
                       target={"_blank"}
-                      className="inline-flex items-center gap-1 text-lg font-medium hover:text-primary-500 dark:hover:text-primary-400"
+                      className="inline-flex items-center gap-1 text-lg font-medium hover:text-gray-900 dark:hover:text-gray-50"
                     >
                       Source Code
                       <MdOpenInNew />

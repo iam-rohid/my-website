@@ -30,7 +30,9 @@ const Sidebar = () => {
             </a>
           </Link>
           <div className="hidden xl:block">
-            <p className="text-2xl font-bold">Rohid</p>
+            <p className="text-2xl font-bold text-gray-900 dark:text-gray-50">
+              Rohid
+            </p>
           </div>
         </div>
         <nav className="px-2 xl:px-4">

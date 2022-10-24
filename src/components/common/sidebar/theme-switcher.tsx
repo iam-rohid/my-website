@@ -25,7 +25,7 @@ const ThemeSwitcher = () => {
             "flex-1 rounded-full py-1",
             colorScheme === ColorScheme.Auto
               ? "text-gray-900 dark:text-gray-50"
-              : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+              : "hover:text-gray-900 dark:hover:text-gray-50"
           )}
           onClick={() => setColorScheme(ColorScheme.Auto)}
         >
@@ -36,7 +36,7 @@ const ThemeSwitcher = () => {
             "flex-1 rounded-full py-1",
             colorScheme === ColorScheme.Light
               ? "text-gray-900 dark:text-gray-50"
-              : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+              : "hover:text-gray-900 dark:hover:text-gray-50"
           )}
           onClick={() => setColorScheme(ColorScheme.Light)}
         >
@@ -47,7 +47,7 @@ const ThemeSwitcher = () => {
             "flex-1 rounded-full py-1",
             colorScheme === ColorScheme.Dark
               ? "text-gray-900 dark:text-gray-50"
-              : "text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
+              : "hover:text-gray-900 dark:hover:text-gray-50"
           )}
           onClick={() => setColorScheme(ColorScheme.Dark)}
         >
@@ -55,7 +55,7 @@ const ThemeSwitcher = () => {
         </button>
       </div>
       <button
-        className="flex h-12 w-12 items-center justify-center rounded-full text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-gray-50 xl:hidden"
+        className="flex h-12 w-12 items-center justify-center rounded-full hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-gray-50 xl:hidden"
         onClick={toggleColorScheme}
       >
         <span className="text-3xl">

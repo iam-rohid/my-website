@@ -26,7 +26,7 @@ const SidebarLink: FC<SidebarLinkProps> = ({
             "flex h-12 w-12 items-center justify-center rounded-full group-hover:bg-gray-100 dark:group-hover:bg-gray-800 xl:w-fit xl:px-3",
             isActive
               ? "font-medium text-gray-900 dark:text-gray-50"
-              : "text-gray-600 group-hover:text-gray-900 dark:text-gray-300 dark:group-hover:text-gray-50"
+              : "group-hover:text-gray-900 dark:group-hover:text-gray-50"
           )}
         >
           <span className="text-3xl">{isActive ? activeIcon : icon}</span>

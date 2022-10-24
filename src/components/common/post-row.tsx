@@ -40,7 +40,7 @@ const PostRow: FC<Props> = (props) => {
     <article>
       <div className="mb-2 flex gap-4 lg:gap-8">
         <div className="flex-1">
-          <p className="mb-2 text-gray-600 dark:text-gray-300">
+          <p className="mb-2">
             Publshed{" "}
             <b>
               {formatDistanceToNow(publishedAt, {
