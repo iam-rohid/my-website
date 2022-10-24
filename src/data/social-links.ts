@@ -2,7 +2,7 @@ export const socialLinks = [
   {
     id: "twitter",
     label: "Twitter",
-    url: "https://twitter.com/iam_rohid",
+    url: "https://twitter.com/rohid_dev",
     isFeatured: true,
   },
   {
